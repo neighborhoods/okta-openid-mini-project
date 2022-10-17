@@ -1,0 +1,8 @@
+{
+  "name": "okta-openid-mini-project",
+  "description": "",
+  "version": "0.1.0",
+  "devDependencies": {
+    "serverless": "^3.7.9"
+  }
+}

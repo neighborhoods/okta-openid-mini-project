@@ -1,0 +1,31 @@
+service: okta-openid-mini-project
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  profile: default
+  runtime: nodejs14.x
+  httpApi:
+    cors:
+      allowCredentials: true
+      allowedOrigins:
+        - http://localhost:3000
+    authorizers:
+      jwtAuthorizer:
+        type: jwt
+        identitySource: $request.header.Authorization
+        issuerUrl: https://<Okta_host>/oauth2/default
+        audience: api://default
+  logs:
+    httpApi:
+      format: '{"ip":"$context.identity.sourceIp","authorizerError":"$context.authorizer.error","requestTime":"$context.requestTime","httpMethod":"$context.httpMethod","path":"$context.path","protocol":"$context.protocol","status":"$context.status","responseLength":"$context.responseLength","requestId":"$context.requestId","extendedRequestId":"$context.extendedRequestId","userAgent":"$context.identity.userAgent","integrationError":"$context.integration.error"}'
+
+functions:
+  hello:
+    handler: handler.hello
+    events:
+      - httpApi:
+          path: /
+          method: get
+          authorizer:
+            name: jwtAuthorizer
