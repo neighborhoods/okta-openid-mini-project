@@ -5,7 +5,7 @@
 
 ## Getting started
 1. Create a new AWS account.
-2. Create an Administrator user and Administrators group, as described 
+2. Create an Administrator user and Administrators group, as described
    [here](https://docs.aws.amazon.com/IAM/latest/UserGuide/getting-started_create-admin-group.html).
 3. Install the AWS CLI, as described
    [here](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html).
@@ -15,7 +15,7 @@
 6. In a shell session in this directory, run:
    ```shell
    $ npm ci
-   $ npx sls deploy 
+   $ npx sls deploy
    ```
    Output of the last command should be:
    ```
@@ -41,11 +41,11 @@
    * Token Prefix: Bearer
 9. Add the following endpoint to your REST API client:
    * Method: GET
-   * URL: (Paste the URL copied in step 6)
+   * URL: (Paste the URL copied in step 7)
    * Headers:
-     * Authorization: (Value generated as configured in step 7)
+     * Authorization: (Value generated as configured in step 8)
 
-## Testing 
+## Testing
 1. Call the endpoint configured above a few times.
 
 ### Current behavior
@@ -58,4 +58,4 @@
 ### Expected behavior
 * Endpoint should not respond 401, unless the token is invalid or expired.
 * The CloudWatch log group /aws/http-api/okta-openid-mini-project-dev entries should not contain the authorizerError
-  values mentioned above. 
+  values mentioned above.
